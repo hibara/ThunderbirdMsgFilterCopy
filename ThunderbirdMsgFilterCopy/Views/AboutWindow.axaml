@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="340" d:DesignHeight="320"
+        x:Class="ThunderbirdMsgFilterCopy.Views.AboutWindow"
+        Width="340" Height="320"
+        CanResize="False"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="Manual">
+
+    <!-- SPEC §8.2.5: About ダイアログ。縦中央揃え、アイコン / 製品名 / バージョン / 著作権 / OK ボタン。 -->
+    <StackPanel Margin="24" Spacing="12"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+        <!-- Source はコードビハインドで AppInfo.AboutIconUri から Bitmap を生成して設定する。
+             x:Static は string をそのまま渡すため Image.Source (IImage) に代入できない。 -->
+        <Image Name="AboutIconImage"
+               Width="64" Height="64"
+               HorizontalAlignment="Center" />
+
+        <TextBlock Name="ProductText"
+                   FontSize="18" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center" />
+
+        <TextBlock Name="VersionText"
+                   FontSize="13"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center" />
+
+        <TextBlock Name="CopyrightText"
+                   FontSize="12"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap" />
+
+        <Button Name="OkButton"
+                Width="80"
+                HorizontalAlignment="Center"
+                IsDefault="True" IsCancel="True"
+                Margin="0,8,0,0" />
+    </StackPanel>
+</Window>

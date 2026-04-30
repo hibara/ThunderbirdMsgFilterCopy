@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ThunderbirdMsgFilterCopy.ViewModels"
+             xmlns:v="using:ThunderbirdMsgFilterCopy.Views"
+             xmlns:res="using:ThunderbirdMsgFilterCopy.Resources"
+             mc:Ignorable="d" d:DesignWidth="760" d:DesignHeight="460"
+             x:Class="ThunderbirdMsgFilterCopy.Views.ImportView"
+             x:DataType="vm:ImportViewModel">
+
+    <!-- SPEC §3.6.1: Drop zone / §3.6.2: Preview switches when file is accepted -->
+    <Grid Margin="16">
+        <!-- Drop zone -->
+        <Border IsVisible="{Binding !HasPreview}"
+                BorderBrush="#AAAAAA" BorderThickness="2" CornerRadius="6"
+                Background="#FAFAFA"
+                DragDrop.AllowDrop="True">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="12">
+                <TextBlock Text="{x:Static res:Strings.ImportDropHint}"
+                           FontSize="16" HorizontalAlignment="Center" />
+                <TextBlock Text="{x:Static res:Strings.ImportOrSeparator}" HorizontalAlignment="Center" Foreground="Gray" />
+                <Button Content="{x:Static res:Strings.ImportPickFile}"
+                        Command="{Binding PickFileCommand}"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </Border>
+
+        <!-- Preview -->
+        <ContentControl IsVisible="{Binding HasPreview}"
+                        Content="{Binding Preview}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate DataType="vm:ImportPreviewViewModel">
+                    <v:ImportPreviewView />
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+    </Grid>
+</UserControl>

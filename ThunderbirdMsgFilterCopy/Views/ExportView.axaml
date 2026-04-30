@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ThunderbirdMsgFilterCopy.ViewModels"
+             xmlns:res="using:ThunderbirdMsgFilterCopy.Resources"
+             mc:Ignorable="d" d:DesignWidth="760" d:DesignHeight="460"
+             x:Class="ThunderbirdMsgFilterCopy.Views.ExportView"
+             x:DataType="vm:ExportViewModel">
+
+    <!-- SPEC §3.5.1: Export screen layout -->
+    <DockPanel Margin="16">
+        <TextBlock DockPanel.Dock="Top"
+                   Text="{x:Static res:Strings.ExportHeader}"
+                   FontSize="14" Margin="0,0,0,8" />
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
+            <Button Content="{x:Static res:Strings.ExportSelectAll}" Command="{Binding SelectAllCommand}" />
+            <Button Content="{x:Static res:Strings.ExportDeselectAll}" Command="{Binding DeselectAllCommand}" />
+        </StackPanel>
+
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right"
+                Content="{x:Static res:Strings.ExportExecute}"
+                Command="{Binding ExportCommand}"
+                IsEnabled="{Binding CanExport}"
+                Margin="0,8,0,0" />
+
+        <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="4">
+            <!--
+              SPEC §5.6.1: 行の表示領域全体でチェック状態をトグルできるようにする。
+              実装方針 (SPEC §5.6.3):
+                - ListBox の SelectionMode を Multiple+Toggle にし、行クリック / Space キー双方で選択を切り替える。
+                - ListBoxItem.IsSelected を item.IsSelected と TwoWay バインドし、選択状態を
+                  チェック状態と同期させる。
+                - CheckBox は表示専用にするため IsHitTestVisible / Focusable を False にし、
+                  独自にクリックを拾わせない。
+                - 行の Grid に Background="Transparent" を与え、空白領域もヒットテスト対象にする。
+            -->
+            <ListBox ItemsSource="{Binding Accounts}"
+                     SelectionMode="Multiple,Toggle">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem" x:DataType="vm:ExportAccountItem">
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    </Style>
+                </ListBox.Styles>
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="vm:ExportAccountItem">
+                        <Grid ColumnDefinitions="Auto,*" Margin="4" Background="Transparent">
+                            <CheckBox IsChecked="{Binding IsSelected}"
+                                      IsHitTestVisible="False"
+                                      Focusable="False"
+                                      VerticalAlignment="Center" />
+                            <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <TextBlock Text="{Binding AccountTypeLabel}" FontWeight="Bold" />
+                                    <TextBlock Text="{Binding DisplayName}" />
+                                </StackPanel>
+                                <TextBlock Foreground="Gray" FontSize="12"
+                                           Text="{Binding DetailLine}" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+    </DockPanel>
+</UserControl>

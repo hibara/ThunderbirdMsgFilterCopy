@@ -1,0 +1,26 @@
+# SPEC 1.2.1: UTF-8 (BOM なし) + LF を強制する。
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{csproj,props,targets,axaml,xaml,json,yml,yaml,md}]
+indent_size = 2
+
+# Avalonia の .axaml は XAML と同じ扱い。
+[*.axaml]
+indent_size = 2
+
+# .NET / C# 固有
+[*.cs]
+# file-scoped namespace を優先 (SPEC §1.1)。
+csharp_style_namespace_declarations = file_scoped:warning
+# nullable は csproj 側で enable 済。
+dotnet_sort_system_directives_first = true
+# using は名前空間の外へ。
+csharp_using_directive_placement = outside_namespace:warning

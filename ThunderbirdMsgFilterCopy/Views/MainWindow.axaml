@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:ThunderbirdMsgFilterCopy.ViewModels"
+        xmlns:v="using:ThunderbirdMsgFilterCopy.Views"
+        xmlns:res="using:ThunderbirdMsgFilterCopy.Resources"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
+        x:Class="ThunderbirdMsgFilterCopy.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="{x:Static res:Strings.WindowTitle}"
+        Width="800" Height="550">
+
+    <DockPanel>
+        <!-- Menu -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="{x:Static res:Strings.MenuFile}">
+                <MenuItem Header="{x:Static res:Strings.MenuFileExit}" Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="{x:Static res:Strings.MenuTools}">
+                <MenuItem Header="{x:Static res:Strings.MenuToolsUndoLastImport}"
+                          Command="{Binding UndoLastImportCommand}"
+                          IsEnabled="{Binding CanUndoLastImport}" />
+            </MenuItem>
+            <MenuItem Header="{x:Static res:Strings.MenuHelp}">
+                <MenuItem Header="{x:Static res:Strings.MenuHelpAbout}" Command="{Binding ShowAboutCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Status bar with profile selector (SPEC §5.1 / §5.3) -->
+        <Border DockPanel.Dock="Bottom" Background="#F0F0F0" Padding="8,4">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <TextBlock Text="{x:Static res:Strings.StatusOsLabel}" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding OsLabel}" VerticalAlignment="Center" />
+                <TextBlock Text="|" VerticalAlignment="Center" />
+                <TextBlock Text="{x:Static res:Strings.StatusProfileLabel}" VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding Profiles}"
+                          SelectedItem="{Binding SelectedProfile}"
+                          MinWidth="240">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="vm:ProfileViewItem">
+                            <TextBlock Text="{Binding Label}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+
+        <!-- Warning banner when Thunderbird is running (SPEC §3.4.3) -->
+        <Border DockPanel.Dock="Top" Background="#FFF3CD" Padding="12,8"
+                IsVisible="{Binding IsThunderbirdRunning}">
+            <TextBlock Text="{x:Static res:Strings.ThunderbirdRunningBanner}"
+                       Foreground="#856404" />
+        </Border>
+
+        <!-- Empty state (SPEC §5.4) -->
+        <Panel IsVisible="{Binding !HasValidProfile}">
+            <TextBlock Text="{x:Static res:Strings.NoProfileMessage}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="18" />
+        </Panel>
+
+        <!-- Tabs -->
+        <TabControl IsVisible="{Binding HasValidProfile}"
+                    IsEnabled="{Binding !IsThunderbirdRunning}">
+            <TabItem Header="{x:Static res:Strings.TabExport}">
+                <v:ExportView DataContext="{Binding Export}" />
+            </TabItem>
+            <TabItem Header="{x:Static res:Strings.TabImport}">
+                <v:ImportView DataContext="{Binding Import}" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

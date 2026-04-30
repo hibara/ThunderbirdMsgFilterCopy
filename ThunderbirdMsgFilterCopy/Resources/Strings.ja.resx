@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- Window / tabs -->
+  <data name="WindowTitle" xml:space="preserve"><value>ThunderbirdMsgFilterCopy</value></data>
+  <data name="TabExport" xml:space="preserve"><value>エクスポート</value></data>
+  <data name="TabImport" xml:space="preserve"><value>インポート</value></data>
+  <data name="ThunderbirdRunningBanner" xml:space="preserve"><value>Thunderbird が起動中です。操作を行うには Thunderbird を終了してください。</value></data>
+  <data name="NoProfileMessage" xml:space="preserve"><value>Thunderbird のプロファイルが見つかりませんでした</value></data>
+
+  <!-- Status bar -->
+  <data name="StatusOsLabel" xml:space="preserve"><value>OS:</value></data>
+  <data name="StatusProfileLabel" xml:space="preserve"><value>プロファイル:</value></data>
+
+  <!-- Menu -->
+  <data name="MenuFile" xml:space="preserve"><value>ファイル(_F)</value></data>
+  <data name="MenuFileExit" xml:space="preserve"><value>終了(_X)</value></data>
+  <data name="MenuTools" xml:space="preserve"><value>ツール(_T)</value></data>
+  <data name="MenuToolsUndoLastImport" xml:space="preserve"><value>直前のインポートを取り消す</value></data>
+  <data name="MenuHelp" xml:space="preserve"><value>ヘルプ(_H)</value></data>
+  <data name="MenuHelpAbout" xml:space="preserve"><value>バージョン情報</value></data>
+
+  <!-- Profile badges (SPEC §3.1.5) -->
+  <data name="ProfileBadgeInUse" xml:space="preserve"><value> [使用中]</value></data>
+  <data name="ProfileBadgeEmpty" xml:space="preserve"><value> [空]</value></data>
+  <data name="ProfileBadgeFilterCountFormat" xml:space="preserve"><value> [フィルター: {0}件]</value></data>
+
+  <!-- Export tab -->
+  <data name="ExportHeader" xml:space="preserve"><value>エクスポート対象のアカウントを選択してください</value></data>
+  <data name="ExportSelectAll" xml:space="preserve"><value>全選択</value></data>
+  <data name="ExportDeselectAll" xml:space="preserve"><value>全解除</value></data>
+  <data name="ExportExecute" xml:space="preserve"><value>エクスポート...</value></data>
+
+  <!-- Account list items -->
+  <data name="AccountTypeImap" xml:space="preserve"><value>[IMAP]</value></data>
+  <data name="AccountTypePop" xml:space="preserve"><value>[POP]</value></data>
+  <data name="AccountTypeLocal" xml:space="preserve"><value>[Local]</value></data>
+  <data name="AccountLocalDisplayName" xml:space="preserve"><value>(ローカル)</value></data>
+  <data name="ExportAccountDetailFormat" xml:space="preserve"><value>{0}  (フィルター: {1}件)</value></data>
+
+  <!-- Import tab drop zone -->
+  <data name="ImportDropHint" xml:space="preserve"><value>ここに .tbfilters ファイルをドラッグ&amp;ドロップ</value></data>
+  <data name="ImportOrSeparator" xml:space="preserve"><value>または</value></data>
+  <data name="ImportPickFile" xml:space="preserve"><value>ファイルを選択...</value></data>
+
+  <!-- Import preview -->
+  <data name="ImportPreviewSourceFormat" xml:space="preserve"><value>エクスポート元: {0}</value></data>
+  <data name="ImportPreviewExportedAtFormat" xml:space="preserve"><value>エクスポート日時: {0}</value></data>
+  <data name="ImportPreviewSourceLabelFormat" xml:space="preserve"><value>{0} ({1})</value></data>
+  <data name="ImportPreviewTargetEmpty" xml:space="preserve"><value>—</value></data>
+  <data name="ImportPreviewStatusMatchedFormat" xml:space="preserve"><value>✓ マッチ (フィルター {0}件を上書き)</value></data>
+  <data name="ImportPreviewStatusUnmatched" xml:space="preserve"><value>✗ 対応先なし (スキップ)</value></data>
+  <data name="ImportPreviewVersionWarningFormat" xml:space="preserve"><value>⚠ version="{0}" (現在の環境は version="{1}")</value></data>
+
+  <!-- Common buttons -->
+  <data name="CommonCancel" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="CommonExecute" xml:space="preserve"><value>実行する</value></data>
+  <data name="CommonOk" xml:space="preserve"><value>OK</value></data>
+  <data name="CommonClose" xml:space="preserve"><value>閉じる</value></data>
+  <data name="CommonDetails" xml:space="preserve"><value>詳細</value></data>
+
+  <!-- Export commands -->
+  <data name="ExportSaveDialogTitle" xml:space="preserve"><value>エクスポート先</value></data>
+  <data name="ExportCompleteTitle" xml:space="preserve"><value>エクスポート完了</value></data>
+  <data name="ExportCompleteMessageFormat" xml:space="preserve"><value>{0} 件のアカウントをエクスポートしました。</value></data>
+  <data name="ExportErrorNoWritePermission" xml:space="preserve"><value>書き込み権限がありません。保存先のアクセス権を確認してください。</value></data>
+  <data name="ExportErrorGeneric" xml:space="preserve"><value>エクスポート中にエラーが発生しました。</value></data>
+
+  <!-- Import commands -->
+  <data name="ImportOpenDialogTitle" xml:space="preserve"><value>インポートするファイルを選択</value></data>
+  <data name="ImportErrorNoProfile" xml:space="preserve"><value>プロファイルが選択されていません。</value></data>
+  <data name="ImportErrorReadFailedTitle" xml:space="preserve"><value>ファイルを読み込めません</value></data>
+  <data name="ImportErrorReadFailedGeneric" xml:space="preserve"><value>ファイルの読み込み中にエラーが発生しました。</value></data>
+
+  <!-- Import execute confirm / result -->
+  <data name="ImportConfirmTitle" xml:space="preserve"><value>インポートを実行します。</value></data>
+  <data name="ImportConfirmMessage" xml:space="preserve"><value>フィルターの「移動先フォルダ」がインポート先の Thunderbird に存在しない場合、そのフィルターは動作しません。
+
+問題があった場合は、メニューから「直前のインポートを取り消す」で元に戻せます。
+
+続行しますか?</value></data>
+  <data name="ImportCompleteTitle" xml:space="preserve"><value>✓ インポートが完了しました</value></data>
+  <data name="ImportCompleteMessageFormat" xml:space="preserve"><value>上書き: {0}件 / スキップ: {1}件
+
+Thunderbird を起動して、フィルターが正しく動作することを確認してください。
+問題があった場合は、メニューから「直前のインポートを取り消す」で元に戻せます。</value></data>
+  <data name="ImportErrorsHeader" xml:space="preserve"><value>
+
+エラー:
+</value></data>
+  <data name="ImportExecuteNotPossibleTitle" xml:space="preserve"><value>インポートを実行できません</value></data>
+  <data name="ImportExecuteErrorGeneric" xml:space="preserve"><value>インポート中にエラーが発生しました。</value></data>
+
+  <!-- Importer / package errors -->
+  <data name="ImportPackageErrorFileNotFound" xml:space="preserve"><value>ファイルが見つかりません。</value></data>
+  <data name="ImportPackageErrorCorrupted" xml:space="preserve"><value>ファイルが破損しているか、本ツールで作成されたものではありません。</value></data>
+  <data name="ImportPackageErrorUnsupportedSchema" xml:space="preserve"><value>このファイルは新しいバージョンのツールで作成されました。</value></data>
+  <data name="ImportPackageErrorThunderbirdRunning" xml:space="preserve"><value>Thunderbird が起動中です。終了してから再実行してください。</value></data>
+  <data name="ImportPackageErrorMissingZipEntryFormat" xml:space="preserve"><value>{0}: パッケージ内のフィルターファイルが見つかりません。</value></data>
+
+  <!-- Undo last import (SPEC §3.7) -->
+  <data name="UndoThunderbirdRunningTitle" xml:space="preserve"><value>Thunderbird が起動中です。</value></data>
+  <data name="UndoThunderbirdRunningMessage" xml:space="preserve"><value>終了してから再実行してください。</value></data>
+  <data name="UndoConfirmTitle" xml:space="preserve"><value>直前のインポートを取り消しますか?</value></data>
+  <data name="UndoConfirmMessageFormat" xml:space="preserve"><value>{0} に実行したインポート ({1}件) を取り消し、元の状態に戻します。</value></data>
+  <data name="UndoConfirmOk" xml:space="preserve"><value>取り消す</value></data>
+  <data name="UndoCompleteTitle" xml:space="preserve"><value>取り消しが完了しました</value></data>
+  <data name="UndoCompleteMessage" xml:space="preserve"><value>ファイルを元の状態に戻しました。</value></data>
+  <data name="UndoErrorTitle" xml:space="preserve"><value>取り消しに失敗しました。</value></data>
+
+  <!-- Main window errors / about -->
+  <data name="ProfileDetectError" xml:space="preserve"><value>プロファイルの検出に失敗しました。</value></data>
+  <data name="AccountScanError" xml:space="preserve"><value>アカウントのスキャンに失敗しました。</value></data>
+  <data name="AboutVersionFormat" xml:space="preserve"><value>バージョン: {0}</value></data>
+  <data name="AboutWindowTitleFormat" xml:space="preserve"><value>{0} について</value></data>
+
+  <!-- Dialog -->
+  <data name="DialogErrorTitle" xml:space="preserve"><value>エラー</value></data>
+</root>

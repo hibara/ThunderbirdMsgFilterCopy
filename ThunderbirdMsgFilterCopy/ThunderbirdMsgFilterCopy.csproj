@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <RootNamespace>ThunderbirdMsgFilterCopy</RootNamespace>
+    <!-- SPEC §8.3: English is the neutral / default resource locale; Japanese ships as a satellite (ja). -->
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <!-- ↓ここがアセンブリ情報 -->
+    <AssemblyName>ThunderbirdMsgFilterCopy</AssemblyName>
+    <Product>ThunderbirdMsgFilterCopy</Product>
+    <AssemblyTitle>ThunderbirdMsgFilterCopy</AssemblyTitle>
+    <Description>Thunderbird のメッセージフィルターを別環境へ移行するツール</Description>
+    <Company>HiBARA Software, LLC</Company>
+    <Authors>M.Hibara</Authors>
+    <Copyright>Copyright(C) 2026 HiBARA Software, LLC</Copyright>
+
+    <!-- バージョン管理 -->
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
+
+    <!-- Windows の EXE プロパティに出るアイコン。SPEC §8.2.7.2 に従い
+         Assets/ はアプリプロジェクト配下 (ThunderbirdMsgFilterCopy/Assets/) に配置する。 -->
+    <ApplicationIcon>Assets\main-icon.ico</ApplicationIcon>
+
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.0.1" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.0.1" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.1" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.1" />
+    <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Costura.Fody" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Fody" Version="6.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ThunderbirdMsgFilterCopy.Core\ThunderbirdMsgFilterCopy.Core.csproj" />
+  </ItemGroup>
+
+  <!--
+    SPEC §8.2.7.2: Assets/ はアプリプロジェクト配下に配置する。
+    プロジェクト直下なので Link 不要、相対パスのまま
+    avares://ThunderbirdMsgFilterCopy/Assets/... として解決される。
+    macOS バンドル用の main-icon.icns も同フォルダに同居させる
+    (build_and_release.sh が参照)。
+  -->
+  <ItemGroup>
+    <AvaloniaResource Include="Assets/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ThunderbirdMsgFilterCopy.ViewModels"
+             xmlns:res="using:ThunderbirdMsgFilterCopy.Resources"
+             mc:Ignorable="d" d:DesignWidth="760" d:DesignHeight="460"
+             x:Class="ThunderbirdMsgFilterCopy.Views.ImportPreviewView"
+             x:DataType="vm:ImportPreviewViewModel">
+
+    <!-- SPEC §3.6.2: Preview screen -->
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,8" Spacing="4">
+            <TextBlock Text="{Binding SourceLine}" />
+            <TextBlock Text="{Binding ExportedAtLine}" />
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Spacing="8" Margin="0,8,0,0">
+            <!-- SPEC §5.7: ボタンは「キャンセル左 / 肯定右」、Esc=IsCancel / Enter=IsDefault。 -->
+            <Button Content="{x:Static res:Strings.CommonCancel}" Command="{Binding CancelCommand}" IsCancel="True" />
+            <Button Content="{x:Static res:Strings.CommonExecute}" Command="{Binding ExecuteCommand}" IsEnabled="{Binding CanExecute}" IsDefault="True" />
+        </StackPanel>
+
+        <Border BorderBrush="#CCCCCC" BorderThickness="1">
+            <ListBox ItemsSource="{Binding Rows}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="vm:ImportPreviewRow">
+                        <StackPanel Margin="6" Spacing="2">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <TextBlock Text="{Binding SourceLabel}" />
+                                <TextBlock Text="→" />
+                                <TextBlock Text="{Binding TargetLabel}" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding UserName}" Foreground="Gray" FontSize="12" />
+                            <TextBlock Text="{Binding StatusText}"
+                                       Foreground="{Binding StatusBrush}"
+                                       FontSize="12" />
+                            <TextBlock Text="{Binding VersionWarning}"
+                                       Foreground="#B38F00" FontSize="12"
+                                       IsVisible="{Binding HasVersionWarning}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+    </DockPanel>
+</UserControl>
