@@ -1,8 +1,7 @@
 {
   "profiles": {
     "ThunderbirdMsgFilterCopy": {
-      "commandName": "Project",
-      "commandLineArgs": "--lang en"
+      "commandName": "Project"
     }
   }
 }
