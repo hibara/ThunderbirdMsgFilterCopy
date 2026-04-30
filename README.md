@@ -133,26 +133,6 @@ dotnet build
 dotnet run --project ThunderbirdMsgFilterCopy
 ```
 
-### macOS 版のリリースビルド
-
-リポジトリルートの `build_and_release.sh` を使うと、`.app` バンドルの作成・コード署名・公証・DMG 化までを一括で実行できます。詳細はスクリプト冒頭のコメントを参照してください。
-
-```bash
-./build_and_release.sh
-```
-
-### スクリーンショット撮影用の言語切り替え
-
-UI 言語を強制指定できます。
-
-```bash
-# 日本語で起動
-ThunderbirdMsgFilterCopy.exe --lang ja
-
-# 英語で起動
-ThunderbirdMsgFilterCopy.exe --lang en
-```
-
 ---
 
 ## 🏗️ 技術スタック
@@ -190,9 +170,9 @@ v1 では実装していないが、今後検討する機能:
 
 ## 👤 作者
 
-**Mitsuhiro Hibara** ([HiBARA Software, LLC](https://hibara.org/))
+**Mitsuhiro Hibara** ([HiBARA Software, LLC](https://hibara.jp/))
 
-- Web: [https://hibara.org/](https://hibara.org/)
+- Web: [https://hibara.jp/](https://hibara.jp/)
 - GitHub: [@hibara](https://github.com/hibara)
 
 ---

@@ -134,24 +134,6 @@ dotnet build
 dotnet run --project ThunderbirdMsgFilterCopy
 ```
 
-### Building a macOS release
-
-The `build_and_release.sh` script at the repository root handles the entire macOS release pipeline — building the `.app` bundle, code-signing, notarizing with Apple, and packaging into a DMG. See the script's header comment for configuration details.
-
-```bash
-./build_and_release.sh
-```
-
-### Forcing a UI language (handy for screenshots)
-
-```bash
-# Launch in Japanese
-ThunderbirdMsgFilterCopy.exe --lang ja
-
-# Launch in English
-ThunderbirdMsgFilterCopy.exe --lang en
-```
-
 ---
 
 ## 🏗️ Tech stack
@@ -189,9 +171,9 @@ Released under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Mitsuhiro Hibara** ([HiBARA Software, LLC](https://hibara.org/))
+**Mitsuhiro Hibara** ([HiBARA Software, LLC](https://hibara.jp/))
 
-- Web: [https://hibara.org/](https://hibara.org/)
+- Web: [https://hibara.jp/](https://hibara.jp/)
 - GitHub: [@hibara](https://github.com/hibara)
 
 ---
