@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="340" d:DesignHeight="320"
         x:Class="ThunderbirdMsgFilterCopy.Views.AboutWindow"
-        Width="340" Height="320"
+        Width="480" Height="320"
         CanResize="False"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
@@ -40,6 +40,7 @@
         <Button Name="OkButton"
                 Width="80"
                 HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
                 IsDefault="True" IsCancel="True"
                 Margin="0,8,0,0" />
     </StackPanel>
